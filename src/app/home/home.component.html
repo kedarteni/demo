@@ -1,0 +1,133 @@
+<mat-toolbar color="primary">Demo</mat-toolbar>
+
+<div class="container">
+
+   
+
+      <mat-card class="my-card-list">
+
+          <mat-toolbar> <b> Products </b></mat-toolbar>
+
+          <mat-card-content *ngFor="let product of product_list; let i = index">
+              <mat-card class="card">
+
+                <mat-card-header>
+                      <mat-card-title>
+                          <span><b>{{product.name}}</b></span>                      
+                      </mat-card-title>
+                    
+                      <mat-card-subtitle> 
+                          
+                          <mat-chip-list>
+                                  <mat-chip >{{product.quantity}}</mat-chip>
+                                  <mat-chip color="warn" >{{product.color}} </mat-chip>
+                          </mat-chip-list>
+                          
+                      </mat-card-subtitle>
+                </mat-card-header>
+                  <span fxFlex></span>
+                  <button mat-icon-button (click)="Edit(i)">  <mat-icon>mode_edit</mat-icon> </button>
+                  <button mat-icon-button color="warn" (click)="Delete(i)">  <mat-icon>delete</mat-icon> </button>
+                  
+
+              </mat-card> 
+               
+          </mat-card-content> 
+     
+
+      </mat-card>
+
+      <mat-card class="my-card-add">
+        <mat-toolbar> <b> Add Products </b> </mat-toolbar>
+
+        
+          <mat-form-field>
+              <input matInput placeholder="Product Title" [(ngModel)]="product_name" autocomplete="off" required pattern="^[a-zA-Z0-9_]*$">
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-select placeholder="Select Quantity" [(ngModel)]="quantity" required> 
+                <mat-option *ngFor= " let quant of Quantity" [value]="quant.value" >
+                  {{quant.value}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Select Color" [(ngModel)]="color" required>
+            <mat-option *ngFor= " let col of Color" [value]="col.viewValue" >
+              {{col.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+     <mat-card-actions>
+
+      <button mat-raised-button color="primary" (click)="Save()" >Save</button>
+      <button mat-raised-button color="warn" (click)="Reset()">Cancel</button>
+      
+     </mat-card-actions>
+
+
+      </mat-card>
+
+</div>
+      <mat-card class="my-card-footer" >
+
+          <mat-grid-list cols="4" rowHeight="2:1">
+              <mat-grid-tile>
+                <mat-grid-tile-header>
+                    <span> RED </span>
+                    <span fxFlex></span>
+                    <mat-chip-list >
+                        <mat-chip>{{red}}</mat-chip>
+                    </mat-chip-list>
+
+                </mat-grid-tile-header>
+
+              </mat-grid-tile>
+
+
+              <mat-grid-tile>
+                  <mat-grid-tile-header>
+                      <span> Blue </span>
+                      <span fxFlex></span>
+                      <mat-chip-list>
+                          <mat-chip>{{blue}}</mat-chip>
+                      </mat-chip-list>
+  
+                  </mat-grid-tile-header>
+  
+                </mat-grid-tile>
+
+
+
+                <mat-grid-tile>
+                    <mat-grid-tile-header>
+                        <span> Green </span>
+                        <span fxFlex></span>
+                        <mat-chip-list>
+                            <mat-chip>{{green}}</mat-chip>
+                        </mat-chip-list>
+    
+                    </mat-grid-tile-header>
+    
+                  </mat-grid-tile>
+
+
+                  <mat-grid-tile>
+                      <mat-grid-tile-header>
+                          <span> ALL </span>
+                          <span fxFlex></span>
+                          <mat-chip-list>
+                              <mat-chip>{{all}}</mat-chip>
+                          </mat-chip-list>
+      
+                      </mat-grid-tile-header>
+      
+                    </mat-grid-tile>
+              
+            </mat-grid-list>
+
+
+      </mat-card>
